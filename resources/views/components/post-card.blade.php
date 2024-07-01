@@ -33,7 +33,7 @@
 
             <footer class="flex justify-between  items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="{{ $post->author->id == 1 ? '/images/elsayed410.jpg' : "https://i.pravatar.cc/60?u={$post->author->id}" }}"
+                    <img src="{{ $post->author->username == 'elsayed410' ? '/images/elsayed410.jpg' : "https://i.pravatar.cc/60?u={$post->author->id}" }}"
                         width="60" height="60" class="rounded-xl" alt="Lary avatar">
                     <div class="ml-3">
                         <x-author-button :author="$post->author" />

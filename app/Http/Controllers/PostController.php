@@ -22,21 +22,20 @@ class PostController extends Controller
     {
         return view('posts.show', [
             'post' => $post,
+            'isFavourite' => auth()->user()->favourites->contains($post->id),
         ]);
     }
 
     public function update(Post $post)
     {
-        $post->favourite = !$post->favourite;
-        $post->save();
-
+        auth()->user()->favourites()->toggle($post->id);
         return back();
     }
 
     public function favourite()
     {
         return view('posts.index', [
-            'posts' => Post::where('user_id', auth()->id())->where('favourite', true)->paginate(9),
+            'posts' => auth()->user()->favourites()->paginate(9),
         ]);
     }
 }

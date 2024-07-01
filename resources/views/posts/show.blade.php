@@ -12,7 +12,7 @@
                         </p>
 
                         <div class="flex items-center lg:justify-center text-sm mt-8">
-                            <img src="{{ $post->author->id == 1 ? '/images/elsayed410.jpg' : "https://i.pravatar.cc/60?u={$post->author->id}" }}"
+                            <img src="{{ $post->author->username == 'elsayed410' ? '/images/elsayed410.jpg' : "https://i.pravatar.cc/60?u={$post->author->id}" }}"
                                 width="60" height="60" class="rounded-xl" alt="Lary avatar">
                             <div class="ml-3 text-left">
                                 <x-author-button :author="$post->author" />
@@ -54,12 +54,12 @@
                         <form action="/posts/{{ $post->id }}" method="POST" id="fav_form">
                             @csrf
                             @method('PATCH')
-                            <button id="fav" type="submit" title="{{ $post->favourite ? 'Unsave post' : 'Save post' }}">
+                            <button id="fav" type="submit" title="{{ $isFavourite ? 'Unsave post' : 'Save post' }}">
                                 <a class="text-xl mr-4 text-blue-500">
-                                    <i class="bi bi-heart{{ $post->favourite ? '-fill' : '' }}"></i>
+                                    <i class="bi bi-heart{{ $isFavourite ? '-fill' : '' }}"></i>
                                 </a>
                             </button>
-                            <input type="hidden" id="status" value="{{ $post->favourite }}">
+                            <input type="hidden" id="status" value="{{ $isFavourite }}">
                         </form>
 
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -78,7 +78,7 @@
                         <form action="/posts/{{ $post->id }}" method="POST" class="p-6 rounded-xl bg-gray-800">
                             @csrf
                             <header class="flex items-center">
-                                <img src="{{ $post->author->id == 1 ? '/images/elsayed410.jpg' : 'https://i.pravatar.cc/60?u=auth()->user()->id' }}"
+                                <img src="{{ $post->author->username == 'elsayed410' ? '/images/elsayed410.jpg' : 'https://i.pravatar.cc/60?u=auth()->user()->id' }}"
                                     alt="" width="40" height="40" class="rounded-xl">
                                 <h2 class="ml-6">Leave a comment.</h2>
                             </header>

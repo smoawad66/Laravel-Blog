@@ -18,32 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //First user (Admin)
-        $user = User::factory()->create([
-            'name' => 'Elsayed Moawad',
-            'username' => 'elsayed410',
-            'email' => 'sayed45@gmail.com',
-        ]);
-
-        $category = Category::factory()->create([
-            'name' => 'programming',
-            'slug' => 'programming-category',
-        ]);
-
-
+        
         $files = collect(File::files(public_path('images/thumb')))->map(fn ($file) => $file->getFileName());
-        // dd($files->random());
 
-        for ($i = 0; $i < 10; $i++) {
-            Post::factory()->create([
-                'user_id' => $user->id,
-                'category_id' => $category->id,
-                'thumbnail' => 'thumbnails/' . $files->random(),
-            ]);
-        }
-
-
-        //Second user
+        // user
         $user = User::factory()->create();
 
         for ($i = 0; $i < 5; $i++) {
@@ -55,6 +33,26 @@ class DatabaseSeeder extends Seeder
 
         for ($i = 0; $i < 5; $i++) {
             Post::factory()->create([
+                'thumbnail' => 'thumbnails/' . $files->random(),
+            ]);
+        }
+
+        // Admin
+        $user = User::factory()->create([
+            'name' => 'Elsayed Moawad',
+            'username' => 'elsayed410',
+            'email' => 'sayed45@gmail.com',
+        ]);
+
+        $category = Category::factory()->create([
+            'name' => 'programming',
+            'slug' => 'programming-category',
+        ]);
+
+        for ($i = 0; $i < 10; $i++) {
+            Post::factory()->create([
+                'user_id' => $user->id,
+                'category_id' => $category->id,
                 'thumbnail' => 'thumbnails/' . $files->random(),
             ]);
         }

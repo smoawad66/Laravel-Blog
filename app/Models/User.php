@@ -22,7 +22,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -43,14 +43,28 @@ class User extends Authenticatable
         ];
     }
 
-    public function getRouteKeyName(){return 'username';}
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 
-    public function posts(){return $this->hasMany(Post::class);}
-    
-    public function comments(){return $this->hasMany(Comment::class);}
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function favourites()
+    {
+        return $this->belongsToMany(Post::class, 'favourites', 'user_id', 'post_id');
+    }
 
     public function trunc($attribute, $length)
     {
-        return substr($this->$attribute, 0, $length) . (strlen($this->$attribute) > $length ? ' ...' : '') ;
+        return substr($this->$attribute, 0, $length) . (strlen($this->$attribute) > $length ? ' ...' : '');
     }
 }

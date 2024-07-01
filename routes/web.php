@@ -34,13 +34,6 @@ Route::patch('/posts/{post}', [PostController::class, 'update'])->middleware('au
 
 Route::post('/posts/{post}', [CommentController::class, 'store'])->middleware('auth');
 
-use Illuminate\Support\Facades\File;
-Route::get('/test', function () {
-
-    $files = collect(File::files('images/thumb'))->map(fn($file) => $file->getFileName());
-    dd($files->random());
-});
-
 // Newsletter
 Route::post('/newsletter', NewsletterController::class);
 

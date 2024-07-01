@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('body');
             $table->string('thumbnail')->nullable();
-            $table->boolean('favourite')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
