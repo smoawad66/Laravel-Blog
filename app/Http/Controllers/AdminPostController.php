@@ -27,6 +27,7 @@ class AdminPostController extends Controller
     {
         $attributes = $this->validatePost(new Post());
         $attributes['user_id'] = auth()->id();
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         Post::create($attributes);
         return redirect('/')->with('success', 'Post published.');
     }
