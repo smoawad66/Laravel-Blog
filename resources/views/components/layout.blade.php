@@ -21,8 +21,8 @@
             <div class="mt-8 flex items-center md:mt-0">
 
                 @guest <!-- equ. to if(! auth()->check()) -->
-                    <a href="/register" class="mr-5 text-xs font-bold uppercase">Register</a>
-                    <a href="/login" class="text-xs mr-3 font-bold uppercase">Login</a>
+                    <a href="/register" class="mr-5 text-xs font-bold uppercase hover:text-blue-500">Register</a>
+                    <a href="/login" class="text-xs mr-3 font-bold uppercase hover:text-blue-500">Login</a>
                 @else
                     <x-dropdown class="mr-4 border-2 rounded-full border-gray-800">
                         <x-slot name="trigger">
