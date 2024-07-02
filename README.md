@@ -1,6 +1,6 @@
 # Laravel-Blog
 This project is a blog web application built using Laravel framework, after completion of [Laracasts Laravel course](https://laracasts.com/series/laravel-8-from-scratch).
-<br><br><br>
+<br><br>
 ![image](https://github.com/smoawad66/Laravel-Blog/assets/93600247/f4ddccc3-d12e-4dc8-b944-d7fa319e3dde)
 
 
