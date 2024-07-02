@@ -30,7 +30,7 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/posts/{post}', [PostController::class, 'show']);
 
 Route::get('/favourite', [PostController::class, 'favourite'])->middleware('auth');
-Route::patch('/posts/{post}', [PostController::class, 'update'])->middleware('auth');// Favourite
+Route::patch('/posts/{post}', [PostController::class, 'update'])->middleware('auth');# Favourite
 
 Route::post('/posts/{post}', [CommentController::class, 'store'])->middleware('auth');
 

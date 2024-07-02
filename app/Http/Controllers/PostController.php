@@ -22,7 +22,8 @@ class PostController extends Controller
     {
         return view('posts.show', [
             'post' => $post,
-            'isFavourite' => auth()->check() ? auth()->user()->favourites->contains($post->id) : false,
+            'comments' => $post->comments()->paginate(9),
+            'isFavourite' => auth()->user()?->favourites->contains($post->id),
         ]);
     }
 

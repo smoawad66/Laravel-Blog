@@ -3,7 +3,7 @@
 <article class="flex bg-gray-900 border-gray-200 p-6 rounded-xl space-x-4">
 
     <div class="flex-shrink-0">
-        <img src="{{ $comment->author->id == 1 ? '/images/elsayed410.jpg' : "https://i.pravatar.cc/60?u={$comment->author->id}" }}"
+        <img src="{{ $comment->author->username == 'elsayed410' ? '/images/elsayed410.jpg' : "https://i.pravatar.cc/60?u={$comment->author->id}" }}"
             alt="" width="60" height="60" class="rounded-xl">
     </div>
 

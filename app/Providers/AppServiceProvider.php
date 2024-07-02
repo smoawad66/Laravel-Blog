@@ -35,7 +35,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useTailwind();
         Model::unguard();
 
         Gate::define('admin', function (User $user) {

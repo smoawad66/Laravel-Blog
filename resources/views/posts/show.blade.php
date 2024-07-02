@@ -50,20 +50,19 @@
                             {{ Str::title($post->title) }}
                         </h1>
 
+                        <!-- Toggle favourite -->
+                        <form action="/posts/{{ $post->id }}" method="POST" id="fav_form">
+                            @csrf
+                            @method('PATCH')
+                            <button id="fav" type="submit"
+                                title="{{ $isFavourite ? 'Unsave post' : 'Save post' }}">
+                                <a class="text-xl mr-4 text-blue-500">
+                                    <i class="bi bi-heart{{ $isFavourite ? '-fill' : '' }}"></i>
+                                </a>
+                            </button>
+                            <input type="hidden" id="status" value="{{ $isFavourite }}">
+                        </form>
                         @auth
-                            <!-- Toggle favourite -->
-                            <form action="/posts/{{ $post->id }}" method="POST" id="fav_form">
-                                @csrf
-                                @method('PATCH')
-                                <button id="fav" type="submit"
-                                    title="{{ $isFavourite ? 'Unsave post' : 'Save post' }}">
-                                    <a class="text-xl mr-4 text-blue-500">
-                                        <i class="bi bi-heart{{ $isFavourite ? '-fill' : '' }}"></i>
-                                    </a>
-                                </button>
-                                <input type="hidden" id="status" value="{{ $isFavourite }}">
-                            </form>
-
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                             <script src="{{ asset('fav.js') }}"></script>
                         @endauth
@@ -104,9 +103,11 @@
                         </p>
                     @endauth
 
-                    @foreach ($post->comments as $comment)
+                    @foreach ($comments as $comment)
                         <x-post-comment :comment="$comment" />
                     @endforeach
+
+                    {{ $comments->links() }}
 
                 </section>
 
